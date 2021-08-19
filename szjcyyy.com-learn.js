@@ -26,6 +26,7 @@
     init();
   }
 
+  insertScript('https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js')
   function init() {
 
     if (homePageFlag) {
@@ -43,8 +44,10 @@
     showMsg('szjcyyy.com-learn 当前访问主页面')
     // 首页
     $('#app > div.indexpc > div.con > div.daohang-pc > div.dh-button.dh-checked').click()
-
-    $('.bofang:contains("播放")').click()
+    setTimeout(function () {
+      var tmp = jQuery('.bofang:contains("播放")')
+      tmp[tmp.length -1].click()
+    }, 1000);
   }
 
   function detailPageInit() {
@@ -90,4 +93,10 @@
     layer.msg(msg, callback)
   }
 
+  function insertScript(src) {
+    var newScript = document.createElement('script');
+    newScript.type = 'text/javascript';
+    newScript.src = src;
+    document.body.appendChild(newScript);
+  }
 })();
